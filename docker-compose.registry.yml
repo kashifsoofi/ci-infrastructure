@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+services:
+    my-registry:
+        image: 'registry:latest'
+        container_name: 'my-registry'
+        volumes:
+            - registry:/var/lib/registry3
+        ports:
+            - "50001:5000"
+        restart: unless-stopped
+
+volumes:
+    registry:
+    
