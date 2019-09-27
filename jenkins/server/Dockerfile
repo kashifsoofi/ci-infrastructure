@@ -1,14 +1,6 @@
 # Starting off with the Jenkins base Image
 FROM jenkins/jenkins:lts
 
-COPY tandem_proxy.pem /usr/local/share/ca-certificates/
-# if we want to install via apt
-USER root
-# RUN apt-get update && apt-get install -y ruby make more-thing-here
-# drop back to the regular jenkins user - good practice
-RUN update-ca-certificates
-USER jenkins
-
 # Installing the plugins we need using the in-built install-plugins.sh script
 RUN /usr/local/bin/install-plugins.sh git matrix-auth workflow-aggregator docker-workflow blueocean credentials-binding
  
